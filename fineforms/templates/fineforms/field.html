@@ -1,0 +1,21 @@
+<div class="row {{ field.css_classes }}">
+  {% if wrapper.widget_then_label %}
+  <div class="small-12 medium-3 columns"></div>
+  <div class="small-12 medium-9 columns">
+    {{ field }} {{ field.label_tag }}
+    {% if field.field.help_text %}
+      <p class="help-text">{{ field.field.help_text }}</p>
+    {% endif %}
+  </div>
+  {% else %}
+  <div class="small-12 medium-3 columns">
+    {{ field.label_tag }}
+  </div>
+  <div class="small-12 medium-9 columns">
+    {{ field }}
+    {% if field.field.help_text %}
+      <p class="help-text">{{ field.field.help_text }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

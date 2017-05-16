@@ -1,0 +1,15 @@
+{% load i18n %}
+{% if wrapper.top_errors or wrapper.has_field_errors %}
+<div class="row">
+  <div class="small-12 columns">
+    <h3>{% trans "Please correct the following errors:" %}</h3>
+    {% if wrapper.top_errors %}
+      <ul>
+        {% for error in wrapper.top_errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
