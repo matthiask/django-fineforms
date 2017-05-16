@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django import forms, template
 from django.conf import settings
 from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
+from django.utils.html import html_safe, mark_safe
 from django.utils.translation import ugettext as _
 
 
@@ -13,6 +13,7 @@ register = template.Library()
 # TODO aria-describedby etc.
 
 
+@html_safe
 class ErrorsWrapper(object):
     template_name = 'fineforms/errors.html'
 
@@ -35,25 +36,27 @@ class ErrorsWrapper(object):
                 if bf.errors:
                     self.has_field_errors = True
 
-    def __html__(self):
+    def __str__(self):
         return render_to_string(self.template_name, {
-            'wrapper': self,
+            'top_errors': self.top_errors,
+            'has_field_errors': self.has_field_errors,
         })
 
 
+@html_safe
 class FieldWrapper(object):
     template_name = 'fineforms/field.html'
 
     def __init__(self, field):
         self.field = field
 
-    def widget_then_label(self):
-        return isinstance(self.field.field.widget, forms.CheckboxInput)
-
-    def __html__(self):
+    def __str__(self):
         return render_to_string(self.template_name, {
-            'wrapper': self,
             'field': self.field,
+            'widget_then_label': isinstance(
+                self.field.field.widget,
+                forms.CheckboxInput,
+            ),
         })
 
 
@@ -61,6 +64,7 @@ class PlainFieldWrapper(FieldWrapper):
     template_name = 'fineforms/field-plain.html'
 
 
+@html_safe
 class FieldsWrapper(object):
     template_name = 'fineforms/fields.html'
 
@@ -68,13 +72,16 @@ class FieldsWrapper(object):
         self.form = form
         self.fields = fields
 
-    def __html__(self):
+    def __str__(self):
+        bfs = [self.form[field] for field in self.fields]
         return render_to_string(self.template_name, {
-            'wrapper': self,
             'fields': [
-                FINEFORMS_WRAPPERS['field'](field)
-                for field in self.fields
+                FINEFORMS_WRAPPERS['field'](bf) for bf in bfs
+                if not bf.is_hidden
             ],
+            'hidden': mark_safe(''.join(
+                str(bf) for bf in bfs if bf.is_hidden
+            )),
         })
 
 

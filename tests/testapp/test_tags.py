@@ -26,6 +26,23 @@ class TagsTestCase(TestCase):
 </div>
 ''')
 
+    def test_fields(self):
+        t = Template('{% load fineforms %}{% ff_fields form %}')
+        self.assertHTMLEqual(
+            t.render(Context({
+                'form': Form(),
+            })),
+            '''\
+<div class=" row">
+  <div class="small-12 medium-3 columns">
+    <label for="id_email">Email:</label>
+  </div>
+  <div class="small-12 medium-9 columns">
+    <input type="email" name="email" required id="id_email" />
+  </div>
+</div><input id="id_hidden" name="hidden" type="hidden" />
+''')
+
     def test_errors(self):
         t = Template('{% load fineforms %}{% ff_errors form nothing %}')
         self.assertHTMLEqual(
@@ -54,4 +71,13 @@ class TagsTestCase(TestCase):
                 'form': Form({'email': 'test@example.com', 'hidden': 'yes'}),
             })),
             '',
+        )
+
+    def test_hidden_fields(self):
+        t = Template('{% load fineforms %}{% ff_hidden_fields form nothing %}')
+        self.assertHTMLEqual(
+            t.render(Context({
+                'form': Form(),
+            })),
+            '<input id="id_hidden" name="hidden" type="hidden" />',
         )
