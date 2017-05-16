@@ -125,7 +125,7 @@ def ff_hidden_fields(*forms):
 FINEFORMS_WRAPPERS = {
     'errors': ErrorsWrapper,
     'field': FieldWrapper,
-    'fields': FieldsWrapper,
     'field-plain': PlainFieldWrapper,
+    'fields': FieldsWrapper,
 }
 FINEFORMS_WRAPPERS.update(getattr(settings, 'FINEFORMS_WRAPPERS', {}))
