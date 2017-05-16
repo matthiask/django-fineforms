@@ -77,6 +77,15 @@ Render a single field. The wrapper can be optionally overridden by
 passing a different type. The key has to exist in the
 ``FINEFORMS_WRAPPERS`` dictionary.
 
+The default implementation renders the label, the widget, help text and
+errors related to the field. It is recommended to also set the
+``error_css_class`` and ``required_css_class`` form attributes; those
+classes are also added to the output.
+
+The ``field-plain`` type can be used if the widget should be rendered
+alone. A wrapping ``<span>`` tag still contains the CSS classes
+mentioned above.
+
 
 ``{% ff_fields form [fields='a,b,c' | exclude='a,b,c'] %}``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
