@@ -69,6 +69,18 @@ class TagsTestCase(TestCase):
 <input id="id_hidden" name="hidden" type="hidden" />
 ''')
 
+        # Test that fields has precedence over exclude
+        t = Template(
+            '{% load fineforms %}'
+            '{% ff_fields form fields="hidden" exclude="email,hidden" %}')
+        self.assertHTMLEqual(
+            t.render(Context({
+                'form': Form(),
+            })),
+            '''\
+<input id="id_hidden" name="hidden" type="hidden" />
+''')
+
     def test_errors(self):
         t = Template('{% load fineforms %}{% ff_errors form nothing %}')
         self.assertHTMLEqual(
