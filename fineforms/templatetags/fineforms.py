@@ -4,6 +4,7 @@ from django import forms, template
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import html_safe, mark_safe
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
 
@@ -128,4 +129,12 @@ FINEFORMS_WRAPPERS = {
     'field-plain': PlainFieldWrapper,
     'fields': FieldsWrapper,
 }
-FINEFORMS_WRAPPERS.update(getattr(settings, 'FINEFORMS_WRAPPERS', {}))
+try:
+    settings.FINEFORMS_WRAPPERS
+except AttributeError:  # pragma: no cover
+    pass
+else:
+    for key, value in settings.FINEFORMS_WRAPPERS.items():
+        FINEFORMS_WRAPPERS[key] = (
+            import_string(value) if isinstance(value, str) else value
+        )

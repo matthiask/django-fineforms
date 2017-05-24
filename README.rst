@@ -56,7 +56,7 @@ setting. You do not have to override all of them; if you only want to
 add another wrapper for a specific field type you could just set::
 
     FINEFORMS_WRAPPERS = {
-        'specific': SpecificWrapper,
+        'specific': 'app.wrappers.SpecificWrapper',
     }
 
 ... and use this wrapper as ``{% ff_field some_field type='specific' %}``

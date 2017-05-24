@@ -5,6 +5,11 @@ Change log
 `Next version`_
 ===============
 
+- Documentation work.
+- Allow specifying additional wrappers as dotted Python paths to avoid
+  problems with circular imports.
+
+
 `0.1`_ (2017-05-16)
 ===================
 

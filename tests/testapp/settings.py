@@ -51,3 +51,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware'
 )
+FINEFORMS_WRAPPERS = {
+    'additional': 'testapp.wrappers.AdditionalWrapper',
+}

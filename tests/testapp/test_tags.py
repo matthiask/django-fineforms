@@ -81,3 +81,22 @@ class TagsTestCase(TestCase):
             })),
             '<input id="id_hidden" name="hidden" type="hidden" />',
         )
+
+    def test_additional(self):
+        t = Template(
+            '{% load fineforms %}{% ff_field form.email type="additional" %}')
+        self.assertHTMLEqual(
+            t.render(Context({
+                'form': Form(),
+            })),
+            '''\
+ADDITIONAL<div class=" row">
+<div class="columns medium-3 small-12">
+<label for="id_email">
+Email:
+</label>
+</div><div class="columns medium-9 small-12">
+<input id="id_email" name="email" required type="email" />
+</div>
+</div>
+''')
