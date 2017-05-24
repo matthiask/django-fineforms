@@ -118,3 +118,6 @@ This template tag is the outlier in that it does not use a template at
 all. The return value is the concatenated result of rendering all hidden
 fields of all passed forms. Falsy parameters (i.e. ``None``) are
 filtered out for you.
+
+Please note that ``{% ff_fields %}`` adds hidden fields to the output
+automatically.
