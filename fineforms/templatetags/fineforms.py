@@ -133,7 +133,7 @@ try:
 except AttributeError:  # pragma: no cover
     pass
 else:
-    for key, value in settings.FINEFORMS_WRAPPERS.items():
-        FINEFORMS_WRAPPERS[key] = (
-            import_string(value) if isinstance(value, str) else value
-        )
+    FINEFORMS_WRAPPERS.update({
+        key: value if callable(value) else import_string(value)
+        for key, value in settings.FINEFORMS_WRAPPERS.items()
+    })
