@@ -108,8 +108,7 @@ def ff_fields(form, fields=None, exclude=None):
     else:
         fields = list(form.fields)
 
-    for f in fields:
-        return FINEFORMS_WRAPPERS['fields'](form, fields)
+    return FINEFORMS_WRAPPERS['fields'](form, fields)
 
 
 @register.simple_tag
