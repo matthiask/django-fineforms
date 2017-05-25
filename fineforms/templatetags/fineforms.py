@@ -47,16 +47,30 @@ class ErrorsWrapper(object):
 @html_safe
 class FieldWrapper(object):
     template_name = 'fineforms/field.html'
+    label_suffix = ''
 
     def __init__(self, field):
         self.field = field
 
     def __str__(self):
+        extra_classes = []
+        if (not hasattr(self.field.form, 'error_css_class') and
+                self.field.errors):
+            extra_classes.append('error')
+        if (not hasattr(self.field.form, 'required_css_class') and
+                self.field.field.required):
+            extra_classes.append('required')
         return render_to_string(self.template_name, {
             'field': self.field,
             'widget_then_label': isinstance(
                 self.field.field.widget,
                 forms.CheckboxInput,
+            ),
+            'label_tag': self.field.label_tag(
+                label_suffix=self.label_suffix,
+            ),
+            'css_classes': self.field.css_classes(
+                extra_classes=extra_classes,
             ),
         })
 

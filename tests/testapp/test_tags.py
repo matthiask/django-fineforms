@@ -16,9 +16,9 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-<div class=" row">
+<div class="required row">
   <div class="small-12 medium-3 columns">
-    <label for="id_email">Email:</label>
+    <label for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
@@ -33,9 +33,9 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-<div class=" row">
+<div class="required row">
   <div class="small-12 medium-3 columns">
-    <label for="id_email">Email:</label>
+    <label for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
@@ -49,9 +49,9 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-<div class=" row">
+<div class="required row">
   <div class="small-12 medium-3 columns">
-    <label for="id_email">Email:</label>
+    <label for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
@@ -128,10 +128,10 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-ADDITIONAL<div class=" row">
+ADDITIONAL<div class="required row">
 <div class="columns medium-3 small-12">
 <label for="id_email">
-Email:
+Email
 </label>
 </div><div class="columns medium-9 small-12">
 <input id="id_email" name="email" required type="email" />

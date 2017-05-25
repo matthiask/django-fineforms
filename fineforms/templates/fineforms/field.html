@@ -1,8 +1,8 @@
-<div class="row {{ field.css_classes }}">
+<div class="row {{ css_classes }}">
   {% if widget_then_label %}
   <div class="small-12 medium-3 columns"></div>
   <div class="small-12 medium-9 columns">
-    {{ field }} {{ field.label_tag }}
+    {{ field }} {{ label_tag }}
     {{ field.errors }}
     {% if field.field.help_text %}
       <p class="help-text">{{ field.field.help_text }}</p>
@@ -10,7 +10,7 @@
   </div>
   {% else %}
   <div class="small-12 medium-3 columns">
-    {{ field.label_tag }}
+    {{ label_tag }}
   </div>
   <div class="small-12 medium-9 columns">
     {{ field }}

@@ -8,6 +8,11 @@ Change log
 - Documentation work.
 - Allow specifying additional wrappers as dotted Python paths to avoid
   problems with circular imports.
+- The ``FieldWrapper`` now passes ``label_tag`` and ``css_classes`` into
+  the template; ``label_tag`` uses ``FieldWrapper.label_suffix``
+  (defaulting to ``''``), and ``css_classes`` contains ``required`` and
+  ``error`` if fitting and if ``Form.required_css_class`` and
+  ``Form.error_css_class`` are undefined.
 
 
 `0.1`_ (2017-05-16)
