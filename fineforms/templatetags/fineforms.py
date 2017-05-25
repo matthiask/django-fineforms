@@ -68,6 +68,10 @@ class FieldWrapper(object):
             ),
             'label_tag': self.field.label_tag(
                 label_suffix=self.label_suffix,
+                attrs=(
+                    {'class': ' '.join(extra_classes)}
+                    if extra_classes else None
+                ),
             ),
             'css_classes': self.field.css_classes(
                 extra_classes=extra_classes,

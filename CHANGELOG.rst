@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ===============
 
+- Django also adds ``required_css_class`` to the label tag; do the same
+  (and also add ``error`` because it simplifies the code).
+
 
 `0.2`_ (2017-05-25)
 ===================

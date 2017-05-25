@@ -18,7 +18,7 @@ class TagsTestCase(TestCase):
             '''\
 <div class="required row">
   <div class="small-12 medium-3 columns">
-    <label for="id_email">Email</label>
+    <label class="required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
@@ -35,7 +35,7 @@ class TagsTestCase(TestCase):
             '''\
 <div class="required row">
   <div class="small-12 medium-3 columns">
-    <label for="id_email">Email</label>
+    <label class="required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
@@ -51,7 +51,7 @@ class TagsTestCase(TestCase):
             '''\
 <div class="required row">
   <div class="small-12 medium-3 columns">
-    <label for="id_email">Email</label>
+    <label class="required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
@@ -130,7 +130,7 @@ class TagsTestCase(TestCase):
             '''\
 ADDITIONAL<div class="required row">
 <div class="columns medium-3 small-12">
-<label for="id_email">
+<label class="required" for="id_email">
 Email
 </label>
 </div><div class="columns medium-9 small-12">
