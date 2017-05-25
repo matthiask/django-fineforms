@@ -48,6 +48,8 @@ class ErrorsWrapper(object):
 class FieldWrapper(object):
     template_name = 'fineforms/field.html'
     label_suffix = ''
+    error_css_class = 'error'
+    required_css_class = 'required'
 
     def __init__(self, field):
         self.field = field
@@ -56,10 +58,10 @@ class FieldWrapper(object):
         extra_classes = []
         if (not hasattr(self.field.form, 'error_css_class') and
                 self.field.errors):
-            extra_classes.append('error')
+            extra_classes.append(self.error_css_class)
         if (not hasattr(self.field.form, 'required_css_class') and
                 self.field.field.required):
-            extra_classes.append('required')
+            extra_classes.append(self.required_css_class)
         return render_to_string(self.template_name, {
             'field': self.field,
             'widget_then_label': isinstance(

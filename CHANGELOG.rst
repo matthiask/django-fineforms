@@ -7,6 +7,8 @@ Change log
 
 - Django also adds ``required_css_class`` to the label tag; do the same
   (and also add ``error`` because it simplifies the code).
+- Parametrize the CSS classes used for ``error_css_class`` and
+  ``required_css_class``.
 
 
 `0.2`_ (2017-05-25)
