@@ -5,10 +5,13 @@ from django.template import Context, Template
 
 class Form(forms.Form):
     email = forms.EmailField()
+    optional = forms.CharField(required=False)
     hidden = forms.CharField(widget=forms.HiddenInput)
 
 
 class TagsTestCase(TestCase):
+    maxDiff = None
+
     def test_field(self):
         t = Template('{% load fineforms %}{% ff_field form.email %}')
         self.assertHTMLEqual(
@@ -40,10 +43,18 @@ class TagsTestCase(TestCase):
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
   </div>
+</div><div class=" row">
+  <div class="small-12 medium-3 columns">
+    <label for="id_optional">Optional</label>
+  </div>
+  <div class="small-12 medium-9 columns">
+    <input type="text" name="optional" id="id_optional" />
+  </div>
 </div><input id="id_hidden" name="hidden" type="hidden" />
 ''')
 
-        t = Template('{% load fineforms %}{% ff_fields form fields="email" %}')
+        t = Template(
+            '{% load fineforms %}{% ff_fields form fields="email" %}')
         self.assertHTMLEqual(
             t.render(Context({
                 'form': Form(),
@@ -60,7 +71,8 @@ class TagsTestCase(TestCase):
 ''')
 
         t = Template(
-            '{% load fineforms %}{% ff_fields form exclude="email" %}')
+            '{% load fineforms %}'
+            '{% ff_fields form exclude="optional,email" %}')
         self.assertHTMLEqual(
             t.render(Context({
                 'form': Form(),
@@ -82,7 +94,10 @@ class TagsTestCase(TestCase):
 ''')
 
     def test_errors(self):
-        t = Template('{% load fineforms %}{% ff_errors form nothing %}')
+        t = Template(
+            '{% load fineforms %}'
+            '{% ff_errors form nothing %}'
+            '{% ff_fields form %}')
         self.assertHTMLEqual(
             t.render(Context({
                 'form': Form({}),
@@ -90,16 +105,30 @@ class TagsTestCase(TestCase):
             '''\
 <div class="row">
   <div class="small-12 columns">
-    <h3>
-    Please correct the following errors:
-    </h3>
-    <ul>
-    <li>
-    (Hidden field hidden) This field is required.
-    </li>
-    </ul>
+    <h3>Please correct the following errors:</h3>
+      <ul>
+        <li>(Hidden field hidden) This field is required.</li>
+      </ul>
   </div>
 </div>
+<div class="row error required">
+  <div class="small-12 medium-3 columns">
+    <label class="error required" for="id_email">Email</label>
+  </div>
+  <div class="small-12 medium-9 columns">
+    <input type="email" name="email" id="id_email" required />
+    <ul class="errorlist"><li>This field is required.</li></ul>
+  </div>
+</div>
+<div class="row ">
+  <div class="small-12 medium-3 columns">
+    <label for="id_optional">Optional</label>
+  </div>
+  <div class="small-12 medium-9 columns">
+    <input type="text" name="optional" id="id_optional" />
+  </div>
+</div>
+<input type="hidden" name="hidden" id="id_hidden" />
 ''')
 
     def test_valid_form(self):
