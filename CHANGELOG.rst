@@ -5,6 +5,10 @@ Change log
 `Next version`_
 ===============
 
+
+`0.2`_ (2017-05-25)
+===================
+
 - Documentation work.
 - Allow specifying additional wrappers as dotted Python paths to avoid
   problems with circular imports.
@@ -21,4 +25,5 @@ Change log
 - Initial public version.
 
 .. _0.1: https://github.com/matthiask/django-fineforms/commit/06f30791f3d
-.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.1...master
+.. _0.2: https://github.com/matthiask/django-fineforms/compare/0.1...0.2
+.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.2...master
