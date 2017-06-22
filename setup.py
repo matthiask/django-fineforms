@@ -11,7 +11,7 @@ def read(filename):
 setup(
     name='django-fineforms',
     version=__import__('fineforms').__version__,
-    description='Keeping you DRY since 2010',
+    description='Form rendering for Django',
     long_description=read('README.rst'),
     author='Matthias Kestenholz',
     author_email='mk@feinheit.ch',
