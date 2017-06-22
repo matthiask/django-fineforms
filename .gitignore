@@ -1,10 +1,10 @@
 *.py?
+*.sw?
 *~
-.*.sw?
-\#*#
-/docs/_build
-/dist
-/build
+.coverage
+.tox
 /*.egg-info
 /MANIFEST
-/tests/venv
+build
+dist
+htmlcov

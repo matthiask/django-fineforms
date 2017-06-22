@@ -1,6 +1,6 @@
 from django import forms
-from django.test import TestCase
 from django.template import Context, Template
+from django.test import TestCase
 
 
 class Form(forms.Form):
