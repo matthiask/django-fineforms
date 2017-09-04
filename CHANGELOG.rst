@@ -9,6 +9,8 @@ Change log
   (and also add ``error`` because it simplifies the code).
 - Parametrize the CSS classes used for ``error_css_class`` and
   ``required_css_class``.
+- Add an additional wrapping ``div`` to the default
+  ``widget_then_label`` field template to avoid flex children layout.
 
 
 `0.2`_ (2017-05-25)
