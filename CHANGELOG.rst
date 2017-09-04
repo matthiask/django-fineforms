@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ===============
 
+`0.3`_ (2017-09-04)
+===================
+
 - Django also adds ``required_css_class`` to the label tag; do the same
   (and also add ``error`` because it simplifies the code).
 - Parametrize the CSS classes used for ``error_css_class`` and
@@ -36,4 +39,5 @@ Change log
 
 .. _0.1: https://github.com/matthiask/django-fineforms/commit/06f30791f3d
 .. _0.2: https://github.com/matthiask/django-fineforms/compare/0.1...0.2
-.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.2...master
+.. _0.3: https://github.com/matthiask/django-fineforms/compare/0.2...0.3
+.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.3...master
