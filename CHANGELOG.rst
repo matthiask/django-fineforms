@@ -11,6 +11,9 @@ Change log
   ``required_css_class``.
 - Add an additional wrapping ``div`` to the default
   ``widget_then_label`` field template to avoid flex children layout.
+- Add the widget class name as a ``widget--$name`` CSS class to the
+  output. This makes styling radio selects more straightforward (use
+  a ``.widget--radioselect ...`` CSS selector)
 
 
 `0.2`_ (2017-05-25)

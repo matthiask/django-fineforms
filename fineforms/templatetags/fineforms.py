@@ -76,7 +76,11 @@ class FieldWrapper(object):
                 ),
             ),
             'css_classes': self.field.css_classes(
-                extra_classes=extra_classes,
+                extra_classes=extra_classes + [
+                    'widget--%s' % (
+                        self.field.field.widget.__class__.__name__.lower(),
+                    ),
+                ],
             ),
         })
 

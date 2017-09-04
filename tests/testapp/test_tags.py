@@ -19,7 +19,7 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-<div class="required row">
+<div class="required row widget--emailinput">
   <div class="small-12 medium-3 columns">
     <label class="required" for="id_email">Email</label>
   </div>
@@ -36,14 +36,14 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-<div class="required row">
+<div class="required row widget--emailinput">
   <div class="small-12 medium-3 columns">
     <label class="required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
     <input type="email" name="email" required id="id_email" />
   </div>
-</div><div class=" row">
+</div><div class="row widget--textinput">
   <div class="small-12 medium-3 columns">
     <label for="id_optional">Optional</label>
   </div>
@@ -60,7 +60,7 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-<div class="required row">
+<div class="required row widget--emailinput">
   <div class="small-12 medium-3 columns">
     <label class="required" for="id_email">Email</label>
   </div>
@@ -111,7 +111,7 @@ class TagsTestCase(TestCase):
       </ul>
   </div>
 </div>
-<div class="row error required">
+<div class="row error required widget--emailinput">
   <div class="small-12 medium-3 columns">
     <label class="error required" for="id_email">Email</label>
   </div>
@@ -120,7 +120,7 @@ class TagsTestCase(TestCase):
     <ul class="errorlist"><li>This field is required.</li></ul>
   </div>
 </div>
-<div class="row ">
+<div class="row widget--textinput">
   <div class="small-12 medium-3 columns">
     <label for="id_optional">Optional</label>
   </div>
@@ -157,7 +157,7 @@ class TagsTestCase(TestCase):
                 'form': Form(),
             })),
             '''\
-ADDITIONAL<div class="required row">
+ADDITIONAL<div class="required row widget--emailinput">
 <div class="columns medium-3 small-12">
 <label class="required" for="id_email">
 Email
