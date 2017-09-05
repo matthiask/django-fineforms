@@ -103,10 +103,10 @@ class TagsTestCase(TestCase):
                 'form': Form({}),
             })),
             '''\
-<div class="row">
+<div class="row errors">
   <div class="small-12 columns">
     <h3>Please correct the following errors:</h3>
-      <ul>
+      <ul class="errorlist nonfield">
         <li>(Hidden field hidden) This field is required.</li>
       </ul>
   </div>

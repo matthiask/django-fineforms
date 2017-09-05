@@ -1,10 +1,10 @@
 {% load i18n %}
 {% if top_errors or has_field_errors %}
-<div class="row">
+<div class="row errors">
   <div class="small-12 columns">
     <h3>{% trans "Please correct the following errors:" %}</h3>
     {% if top_errors %}
-      <ul>
+      <ul class="errorlist nonfield">
         {% for error in top_errors %}
           <li>{{ error }}</li>
         {% endfor %}
