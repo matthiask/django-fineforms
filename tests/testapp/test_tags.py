@@ -9,6 +9,11 @@ class Form(forms.Form):
     hidden = forms.CharField(widget=forms.HiddenInput)
 
 
+class HelpForm(forms.Form):
+    field1 = forms.CharField(help_text='field1 help text')
+    field2 = forms.BooleanField(help_text='field2 help text')
+
+
 class TagsTestCase(TestCase):
     maxDiff = None
 
@@ -165,5 +170,33 @@ Email
 </div><div class="columns medium-9 small-12">
 <input id="id_email" name="email" required type="email" />
 </div>
+</div>
+''')
+
+    def test_help_text(self):
+        t = Template('{% load fineforms %}{% ff_fields form %}')
+        self.assertHTMLEqual(
+            t.render(Context({
+                'form': HelpForm(),
+            })),
+            '''\
+<div class="row required widget--textinput">
+  <div class="small-12 medium-3 columns">
+    <label class="required" for="id_field1">Field1</label>
+  </div>
+  <div class="small-12 medium-9 columns">
+    <input type="text" name="field1" required id="id_field1" />
+    <p class="help-text">field1 help text</p>
+  </div>
+</div>
+<div class="row widget--checkboxinput required">
+  <div class="small-12 medium-3 columns"></div>
+  <div class="small-12 medium-9 columns">
+    <div>
+      <input type="checkbox" name="field2" required id="id_field2" />
+      <label class="required" for="id_field2">Field2</label>
+      <p class="help-text">field2 help text</p>
+    </div>
+  </div>
 </div>
 ''')
