@@ -7,6 +7,7 @@ Change log
 
 - Added CSS classes to the default ``ff_errors`` template's top level
   element and also to the error list.
+- Moved all wrappers into ``fineforms.wrappers``.
 
 
 `0.3`_ (2017-09-04)

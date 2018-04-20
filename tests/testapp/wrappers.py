@@ -1,4 +1,4 @@
-from fineforms.templatetags.fineforms import FieldWrapper
+from fineforms.wrappers import FieldWrapper
 
 
 class AdditionalWrapper(FieldWrapper):
