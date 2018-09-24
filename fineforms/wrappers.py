@@ -13,7 +13,7 @@ from django.utils.translation import ugettext as _
 
 @html_safe
 class ErrorsWrapper(object):
-    template_name = 'fineforms/errors.html'
+    template_name = "fineforms/errors.html"
 
     def __init__(self, forms):
         self.forms = forms
@@ -24,71 +24,74 @@ class ErrorsWrapper(object):
             for name in form.fields:
                 bf = form[name]
                 if bf.is_hidden and bf.errors:
-                    self.top_errors.extend([
-                        _('(Hidden field %(name)s) %(error)s') % {
-                            'name': name,
-                            'error': e,
-                        } for e in bf.errors
-                    ])
+                    self.top_errors.extend(
+                        [
+                            _("(Hidden field %(name)s) %(error)s")
+                            % {"name": name, "error": e}
+                            for e in bf.errors
+                        ]
+                    )
 
                 if bf.errors:
                     self.has_field_errors = True
 
     def __str__(self):
-        return render_to_string(self.template_name, {
-            'top_errors': self.top_errors,
-            'has_field_errors': self.has_field_errors,
-        })
+        return render_to_string(
+            self.template_name,
+            {"top_errors": self.top_errors, "has_field_errors": self.has_field_errors},
+        )
 
 
 @html_safe
 class FieldWrapper(object):
-    template_name = 'fineforms/field.html'
-    label_suffix = ''
-    error_css_class = 'error'
-    required_css_class = 'required'
+    template_name = "fineforms/field.html"
+    label_suffix = ""
+    error_css_class = "error"
+    required_css_class = "required"
 
     def __init__(self, field):
         self.field = field
 
     def __str__(self):
         extra_classes = []
-        if (not hasattr(self.field.form, 'error_css_class') and
-                self.field.errors):
+        if not hasattr(self.field.form, "error_css_class") and self.field.errors:
             extra_classes.append(self.error_css_class)
-        if (not hasattr(self.field.form, 'required_css_class') and
-                self.field.field.required):
+        if (
+            not hasattr(self.field.form, "required_css_class")
+            and self.field.field.required
+        ):
             extra_classes.append(self.required_css_class)
-        return render_to_string(self.template_name, {
-            'field': self.field,
-            'widget_then_label': isinstance(
-                self.field.field.widget,
-                forms.CheckboxInput,
-            ),
-            'label_tag': self.field.label_tag(
-                label_suffix=self.label_suffix,
-                attrs=(
-                    {'class': ' '.join(extra_classes)}
-                    if extra_classes else None
+        return render_to_string(
+            self.template_name,
+            {
+                "field": self.field,
+                "widget_then_label": isinstance(
+                    self.field.field.widget, forms.CheckboxInput
                 ),
-            ),
-            'css_classes': self.field.css_classes(
-                extra_classes=extra_classes + [
-                    'widget--%s' % (
-                        self.field.field.widget.__class__.__name__.lower(),
+                "label_tag": self.field.label_tag(
+                    label_suffix=self.label_suffix,
+                    attrs=(
+                        {"class": " ".join(extra_classes)} if extra_classes else None
                     ),
-                ],
-            ),
-        })
+                ),
+                "css_classes": self.field.css_classes(
+                    extra_classes=extra_classes
+                    + [
+                        "widget--%s"
+                        % (self.field.field.widget.__class__.__name__.lower(),)
+                    ]
+                ),
+            },
+        )
 
 
 class PlainFieldWrapper(FieldWrapper):
-    template_name = 'fineforms/field-plain.html'
+    template_name = "fineforms/field-plain.html"
 
 
 @html_safe
 class FieldsWrapper(object):
-    template_name = 'fineforms/fields.html'
+    template_name = "fineforms/fields.html"
 
     def __init__(self, form, fields):
         self.form = form
@@ -96,29 +99,31 @@ class FieldsWrapper(object):
 
     def __str__(self):
         bfs = [self.form[field] for field in self.fields]
-        return render_to_string(self.template_name, {
-            'fields': [
-                FINEFORMS_WRAPPERS['field'](bf) for bf in bfs
-                if not bf.is_hidden
-            ],
-            'hidden': mark_safe(''.join(
-                str(bf) for bf in bfs if bf.is_hidden
-            )),
-        })
+        return render_to_string(
+            self.template_name,
+            {
+                "fields": [
+                    FINEFORMS_WRAPPERS["field"](bf) for bf in bfs if not bf.is_hidden
+                ],
+                "hidden": mark_safe("".join(str(bf) for bf in bfs if bf.is_hidden)),
+            },
+        )
 
 
 FINEFORMS_WRAPPERS = {
-    'errors': ErrorsWrapper,
-    'field': FieldWrapper,
-    'field-plain': PlainFieldWrapper,
-    'fields': FieldsWrapper,
+    "errors": ErrorsWrapper,
+    "field": FieldWrapper,
+    "field-plain": PlainFieldWrapper,
+    "fields": FieldsWrapper,
 }
 try:
     settings.FINEFORMS_WRAPPERS
 except AttributeError:  # pragma: no cover
     pass
 else:
-    FINEFORMS_WRAPPERS.update({
-        key: value if callable(value) else import_string(value)
-        for key, value in settings.FINEFORMS_WRAPPERS.items()
-    })
+    FINEFORMS_WRAPPERS.update(
+        {
+            key: value if callable(value) else import_string(value)
+            for key, value in settings.FINEFORMS_WRAPPERS.items()
+        }
+    )

@@ -11,27 +11,25 @@ register = template.Library()
 
 @register.simple_tag
 def ff_errors(*forms):
-    return FINEFORMS_WRAPPERS['errors']([form for form in forms if form])
+    return FINEFORMS_WRAPPERS["errors"]([form for form in forms if form])
 
 
 @register.simple_tag
-def ff_field(field, type='field'):
+def ff_field(field, type="field"):
     return FINEFORMS_WRAPPERS[type](field)
 
 
 @register.simple_tag
 def ff_fields(form, fields=None, exclude=None):
     if fields is not None:
-        fields = fields.split(',')
+        fields = fields.split(",")
     elif exclude is not None:
-        exclude = exclude.split(',')
-        fields = [
-            f for f in list(form.fields) if f not in exclude
-        ]
+        exclude = exclude.split(",")
+        fields = [f for f in list(form.fields) if f not in exclude]
     else:
         fields = list(form.fields)
 
-    return FINEFORMS_WRAPPERS['fields'](form, fields)
+    return FINEFORMS_WRAPPERS["fields"](form, fields)
 
 
 @register.simple_tag
@@ -42,4 +40,4 @@ def ff_hidden_fields(*forms):
             bf = form[name]
             if bf.is_hidden:
                 fields.append(bf)
-    return mark_safe(''.join(str(f) for f in fields))
+    return mark_safe("".join(str(f) for f in fields))
