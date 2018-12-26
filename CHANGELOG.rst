@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ===============
 
+`0.4`_ (2018-12-26)
+===================
+
 - Added CSS classes to the default ``ff_errors`` template's top level
   element and also to the error list.
 - Moved all wrappers into ``fineforms.wrappers``.
@@ -52,4 +55,5 @@ Change log
 .. _0.1: https://github.com/matthiask/django-fineforms/commit/06f30791f3d
 .. _0.2: https://github.com/matthiask/django-fineforms/compare/0.1...0.2
 .. _0.3: https://github.com/matthiask/django-fineforms/compare/0.2...0.3
-.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.3...master
+.. _0.4: https://github.com/matthiask/django-fineforms/compare/0.3...0.4
+.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.4...master
