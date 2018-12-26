@@ -1,0 +1,25 @@
+<div class="grid-x grid-padding-x {{ css_classes }}">
+  {% if widget_then_label %}
+  <div class="small-12 medium-3 cell"></div>
+  <div class="small-12 medium-9 cell">
+    <div>
+      {{ field }} {{ label_tag }}
+      {{ field.errors }}
+      {% if field.field.help_text %}
+        <p class="help-text">{{ field.field.help_text }}</p>
+      {% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div class="small-12 medium-3 cell">
+    {{ label_tag }}
+  </div>
+  <div class="small-12 medium-9 cell">
+    {{ field }}
+    {{ field.errors }}
+    {% if field.field.help_text %}
+      <p class="help-text">{{ field.field.help_text }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

@@ -11,6 +11,10 @@ Change log
 - Reformatted the code using black.
 - Modified template tags to pass on keyword arguments to the wrappers
   they instantiate.
+- Added a template package using `Foundation's XY-grid
+  <https://foundation.zurb.com/sites/docs/xy-grid.html>`__, usable by
+  adding ``fineforms.pacakges.foundation_xy_grid`` before ``fineforms``
+  to ``INSTALLED_APPS``.
 
 
 `0.3`_ (2017-09-04)
