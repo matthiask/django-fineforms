@@ -9,6 +9,8 @@ Change log
   element and also to the error list.
 - Moved all wrappers into ``fineforms.wrappers``.
 - Reformatted the code using black.
+- Modified template tags to pass on keyword arguments to the wrappers
+  they instantiate.
 
 
 `0.3`_ (2017-09-04)

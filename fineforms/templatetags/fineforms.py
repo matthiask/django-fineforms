@@ -10,17 +10,17 @@ register = template.Library()
 
 
 @register.simple_tag
-def ff_errors(*forms):
-    return FINEFORMS_WRAPPERS["errors"]([form for form in forms if form])
+def ff_errors(*forms, **kwargs):
+    return FINEFORMS_WRAPPERS["errors"]([form for form in forms if form], **kwargs)
 
 
 @register.simple_tag
-def ff_field(field, type="field"):
-    return FINEFORMS_WRAPPERS[type](field)
+def ff_field(field, type="field", **kwargs):
+    return FINEFORMS_WRAPPERS[type](field, **kwargs)
 
 
 @register.simple_tag
-def ff_fields(form, fields=None, exclude=None):
+def ff_fields(form, fields=None, exclude=None, **kwargs):
     if fields is not None:
         fields = fields.split(",")
     elif exclude is not None:
@@ -29,7 +29,7 @@ def ff_fields(form, fields=None, exclude=None):
     else:
         fields = list(form.fields)
 
-    return FINEFORMS_WRAPPERS["fields"](form, fields)
+    return FINEFORMS_WRAPPERS["fields"](form, fields, **kwargs)
 
 
 @register.simple_tag
