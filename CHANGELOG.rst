@@ -5,6 +5,10 @@ Change log
 `Next version`_
 ===============
 
+
+`0.5`_ (2019-02-13)
+===================
+
 - Added a ``ff_submit`` tag for showing submit buttons.
 - All defaults are arbitrary. Arbitrarily changed the default for the
   ``foundation_xy_grid`` package to only show fields and labels in one
@@ -62,4 +66,5 @@ Change log
 .. _0.2: https://github.com/matthiask/django-fineforms/compare/0.1...0.2
 .. _0.3: https://github.com/matthiask/django-fineforms/compare/0.2...0.3
 .. _0.4: https://github.com/matthiask/django-fineforms/compare/0.3...0.4
-.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.4...master
+.. _0.5: https://github.com/matthiask/django-fineforms/compare/0.4...0.5
+.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.5...master
