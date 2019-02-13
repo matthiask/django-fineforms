@@ -188,3 +188,30 @@ Email
 </div>
 """,
         )
+
+    def test_submit(self):
+        t = Template("{% load fineforms %}{% ff_submit %}")
+        self.assertHTMLEqual(
+            t.render(Context({})),
+            """\
+<div class="row">
+  <div class="small-12 medium-3 columns"></div>
+  <div class="small-12 medium-9 columns">
+    <button type="submit">Save</button>
+  </div>
+</div>
+""",
+        )
+
+        t = Template("{% load fineforms %}{% ff_submit 'Login' %}")
+        self.assertHTMLEqual(
+            t.render(Context({})),
+            """\
+<div class="row">
+  <div class="small-12 medium-3 columns"></div>
+  <div class="small-12 medium-9 columns">
+    <button type="submit">Login</button>
+  </div>
+</div>
+""",
+        )

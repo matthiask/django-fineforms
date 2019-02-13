@@ -41,3 +41,8 @@ def ff_hidden_fields(*forms):
             if bf.is_hidden:
                 fields.append(bf)
     return mark_safe("".join(str(f) for f in fields))
+
+
+@register.inclusion_tag("fineforms/submit.html")
+def ff_submit(text=None):
+    return {"text": text}

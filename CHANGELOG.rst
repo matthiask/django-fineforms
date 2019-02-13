@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ===============
 
+- Added a ``ff_submit`` tag for showing submit buttons.
+
+
 `0.4`_ (2018-12-26)
 ===================
 
