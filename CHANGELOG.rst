@@ -6,6 +6,9 @@ Change log
 ===============
 
 - Added a ``ff_submit`` tag for showing submit buttons.
+- All defaults are arbitrary. Arbitrarily changed the default for the
+  ``foundation_xy_grid`` package to only show fields and labels in one
+  line for large screend.
 
 
 `0.4`_ (2018-12-26)
