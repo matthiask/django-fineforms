@@ -5,8 +5,13 @@ Change log
 `Next version`_
 ===============
 
+
+`0.6`_ (2021-02-16)
+===================
+
 - Added ``forms`` to the context of ``fineforms/errors.html``, ``form`` to the
   context of ``fineforms/fields.html``.
+- Switched from Travis CI to GitHub actions.
 
 
 `0.5`_ (2019-02-13)
