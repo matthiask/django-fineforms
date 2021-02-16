@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ===============
 
+- Added ``forms`` to the context of ``fineforms/errors.html``, ``form`` to the
+  context of ``fineforms/fields.html``.
+
 
 `0.5`_ (2019-02-13)
 ===================

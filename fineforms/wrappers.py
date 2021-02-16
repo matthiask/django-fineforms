@@ -38,7 +38,11 @@ class ErrorsWrapper(object):
     def __str__(self):
         return render_to_string(
             self.template_name,
-            {"top_errors": self.top_errors, "has_field_errors": self.has_field_errors},
+            {
+                "forms": forms,
+                "top_errors": self.top_errors,
+                "has_field_errors": self.has_field_errors,
+            },
         )
 
 
@@ -102,6 +106,7 @@ class FieldsWrapper(object):
         return render_to_string(
             self.template_name,
             {
+                "form": self.form,
                 "fields": [
                     FINEFORMS_WRAPPERS["field"](bf) for bf in bfs if not bf.is_hidden
                 ],
