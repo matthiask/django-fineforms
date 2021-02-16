@@ -2,8 +2,8 @@
 django-fineforms - Form rendering for Django
 ============================================
 
-.. image:: https://travis-ci.org/matthiask/django-fineforms.png?branch=master
-   :target: https://travis-ci.org/matthiask/django-fineforms
+.. image:: https://github.com/matthiask/django-fineforms/workflows/Tests/badge.svg
+    :target: https://github.com/matthiask/django-fineforms
 
 This library offers an improved replacement for Django's own form
 rendering methods (``as_p``, ``as_table`` etc.) while staying simple
@@ -44,10 +44,10 @@ wrappers use a template to render their output. The default wrapper
 types are as follows::
 
     {
-        'errors': ErrorsWrapper,
-        'field': FieldWrapper,
-        'field-plain': PlainFieldWrapper,
-        'fields': FieldsWrapper,
+        "errors": ErrorsWrapper,
+        "field": FieldWrapper,
+        "field-plain": PlainFieldWrapper,
+        "fields": FieldsWrapper,
     }
 
 The wrappers themselves mostly aren't configurable, but you can replace
@@ -56,7 +56,7 @@ setting. You do not have to override all of them; if you only want to
 add another wrapper for a specific field type you could just set::
 
     FINEFORMS_WRAPPERS = {
-        'specific': 'app.wrappers.SpecificWrapper',
+        "specific": "app.wrappers.SpecificWrapper",
     }
 
 ... and use this wrapper as ``{% ff_field some_field type='specific' %}``
@@ -97,7 +97,7 @@ comma-separated strings that can be used to only render a selection of
 fields. The ``fields`` parameter takes precedence if both are given.
 
 Hidden fields are rendered separately at the end, all other fields are
-wrapped using ``FINEFORMS_WRAPPERS['field']`` and rendered as well.
+wrapped using ``FINEFORMS_WRAPPERS["field"]`` and rendered as well.
 
 
 ``{% ff_errors form1 [form2 ...] %}``
