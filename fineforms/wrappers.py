@@ -39,7 +39,7 @@ class ErrorsWrapper(object):
         return render_to_string(
             self.template_name,
             {
-                "forms": forms,
+                "forms": self.forms,
                 "top_errors": self.top_errors,
                 "has_field_errors": self.has_field_errors,
             },
