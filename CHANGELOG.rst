@@ -76,4 +76,4 @@ Change log
 .. _0.4: https://github.com/matthiask/django-fineforms/compare/0.3...0.4
 .. _0.5: https://github.com/matthiask/django-fineforms/compare/0.4...0.5
 .. _0.6: https://github.com/matthiask/django-fineforms/compare/0.5...0.6
-.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.6...master
+.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.6...main
