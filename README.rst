@@ -121,3 +121,11 @@ filtered out for you.
 
 Please note that ``{% ff_fields %}`` adds hidden fields to the output
 automatically.
+
+
+``{% ff_submit [_("label")] %}``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Template: ``fineforms/submit.html``
+
+Show a submit button.
