@@ -41,7 +41,9 @@ The template tags mostly wrap their arguments in wrapper classes that do
 the real work. For example, ``{% ff_field %}`` simply wraps the passed
 field in a wrapper defined in the ``FINEFORMS_WRAPPERS`` setting. All
 wrappers use a template to render their output. The default wrapper
-types are as follows::
+types are as follows:
+
+.. code-block:: python
 
     {
         "errors": ErrorsWrapper,
@@ -53,7 +55,9 @@ types are as follows::
 The wrappers themselves mostly aren't configurable, but you can replace
 individual wrappers (or all of them) by adding a ``FINEFORMS_WRAPPERS``
 setting. You do not have to override all of them; if you only want to
-add another wrapper for a specific field type you could just set::
+add another wrapper for a specific field type you could just set:
+
+.. code-block:: python
 
     FINEFORMS_WRAPPERS = {
         "specific": "app.wrappers.SpecificWrapper",
