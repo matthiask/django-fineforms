@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django import forms
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -12,7 +10,7 @@ from django.utils.translation import gettext as _
 
 
 @html_safe
-class ErrorsWrapper(object):
+class ErrorsWrapper:
     template_name = "fineforms/errors.html"
 
     def __init__(self, forms):
@@ -47,7 +45,7 @@ class ErrorsWrapper(object):
 
 
 @html_safe
-class FieldWrapper(object):
+class FieldWrapper:
     template_name = "fineforms/field.html"
     label_suffix = ""
     error_css_class = "error"
@@ -94,7 +92,7 @@ class PlainFieldWrapper(FieldWrapper):
 
 
 @html_safe
-class FieldsWrapper(object):
+class FieldsWrapper:
     template_name = "fineforms/fields.html"
 
     def __init__(self, form, fields):
