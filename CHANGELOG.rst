@@ -7,6 +7,7 @@ Change log
 
 - Dropped support for Python < 3.8, Django < 3.2.
 - Added Django 4.1 and 4.2.
+- Added Romansh translations.
 
 
 `0.6`_ (2021-02-16)
