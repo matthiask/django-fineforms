@@ -5,6 +5,14 @@ Change log
 `Next version`_
 ===============
 
+.. _Next version: https://github.com/matthiask/django-fineforms/compare/0.7...main
+
+
+`0.7`_ (2023-04-13)
+===================
+
+.. _0.7: https://github.com/matthiask/django-fineforms/compare/0.6...0.7
+
 - Dropped support for Python < 3.8, Django < 3.2.
 - Added Django 4.1 and 4.2.
 - Added Romansh translations.
