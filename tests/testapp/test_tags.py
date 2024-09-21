@@ -27,7 +27,7 @@ class TagsTestCase(TestCase):
     <label class="required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
-    <input type="email" name="email" required id="id_email" />
+    <input type="email" name="email" required id="id_email" maxlength="320" />
   </div>
 </div>
 """,
@@ -43,7 +43,7 @@ class TagsTestCase(TestCase):
     <label class="required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
-    <input type="email" name="email" required id="id_email" />
+    <input type="email" name="email" required id="id_email" maxlength="320" />
   </div>
 </div><div class="row widget--textinput">
   <div class="small-12 medium-3 columns">
@@ -65,7 +65,7 @@ class TagsTestCase(TestCase):
     <label class="required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
-    <input type="email" name="email" required id="id_email" />
+    <input type="email" name="email" required id="id_email" maxlength="320" />
   </div>
 </div>
 """,
@@ -113,7 +113,7 @@ class TagsTestCase(TestCase):
     <label class="error required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
-    <input type="email" name="email" id="id_email" required />
+    <input type="email" name="email" id="id_email" maxlength="320" required />
     <ul class="errorlist"><li>This field is required.</li></ul>
   </div>
 </div>
@@ -156,7 +156,7 @@ ADDITIONAL<div class="required row widget--emailinput">
 Email
 </label>
 </div><div class="columns medium-9 small-12">
-<input id="id_email" name="email" required type="email" />
+<input id="id_email" maxlength="320" name="email" required type="email" />
 </div>
 </div>
 """,

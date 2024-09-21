@@ -104,9 +104,7 @@ class FieldsWrapper:
             self.template_name,
             {
                 "form": self.form,
-                "fields": [
-                    wrapper("field")(bf) for bf in bfs if not bf.is_hidden
-                ],
+                "fields": [wrapper("field")(bf) for bf in bfs if not bf.is_hidden],
                 "hidden": mark_safe("".join(str(bf) for bf in bfs if bf.is_hidden)),
             },
         )
@@ -122,4 +120,5 @@ FINEFORMS_WRAPPERS = {
 
 @cache
 def wrapper(type):
-    return (FINEFORMS_WRAPPERS | getattr(settings, "FINEFORMS_WRAPPERS", {}))[type]
+    typ = (FINEFORMS_WRAPPERS | getattr(settings, "FINEFORMS_WRAPPERS", {}))[type]
+    return import_string(typ) if isinstance(typ, str) else typ
