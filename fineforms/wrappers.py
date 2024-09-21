@@ -78,10 +78,7 @@ class FieldWrapper:
                 ),
                 "css_classes": self.field.css_classes(
                     extra_classes=extra_classes
-                    + [
-                        "widget--%s"
-                        % (self.field.field.widget.__class__.__name__.lower(),)
-                    ]
+                    + [f"widget--{self.field.field.widget.__class__.__name__.lower()}"]
                 ),
             },
         )
@@ -119,14 +116,15 @@ FINEFORMS_WRAPPERS = {
     "field-plain": PlainFieldWrapper,
     "fields": FieldsWrapper,
 }
+
 try:
-    settings.FINEFORMS_WRAPPERS
+    wrappers = settings.FINEFORMS_WRAPPERS
 except AttributeError:  # pragma: no cover
     pass
 else:
-    FINEFORMS_WRAPPERS.update(
+    wrappers.update(
         {
             key: value if callable(value) else import_string(value)
-            for key, value in settings.FINEFORMS_WRAPPERS.items()
+            for key, value in wrappers.items()
         }
     )
