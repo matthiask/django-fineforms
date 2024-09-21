@@ -1,3 +1,5 @@
+from functools import cache
+
 from django import forms
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -103,7 +105,7 @@ class FieldsWrapper:
             {
                 "form": self.form,
                 "fields": [
-                    FINEFORMS_WRAPPERS["field"](bf) for bf in bfs if not bf.is_hidden
+                    wrapper("field")(bf) for bf in bfs if not bf.is_hidden
                 ],
                 "hidden": mark_safe("".join(str(bf) for bf in bfs if bf.is_hidden)),
             },
@@ -117,14 +119,7 @@ FINEFORMS_WRAPPERS = {
     "fields": FieldsWrapper,
 }
 
-try:
-    wrappers = settings.FINEFORMS_WRAPPERS
-except AttributeError:  # pragma: no cover
-    pass
-else:
-    wrappers.update(
-        {
-            key: value if callable(value) else import_string(value)
-            for key, value in wrappers.items()
-        }
-    )
+
+@cache
+def wrapper(type):
+    return (FINEFORMS_WRAPPERS | getattr(settings, "FINEFORMS_WRAPPERS", {}))[type]

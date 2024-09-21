@@ -1,7 +1,7 @@
 from django import template
 from django.utils.html import mark_safe
 
-from fineforms.wrappers import FINEFORMS_WRAPPERS
+from fineforms.wrappers import wrapper
 
 
 register = template.Library()
@@ -9,12 +9,12 @@ register = template.Library()
 
 @register.simple_tag
 def ff_errors(*forms, **kwargs):
-    return FINEFORMS_WRAPPERS["errors"]([form for form in forms if form], **kwargs)
+    return wrapper("errors")([form for form in forms if form], **kwargs)
 
 
 @register.simple_tag
 def ff_field(field, type="field", **kwargs):
-    return FINEFORMS_WRAPPERS[type](field, **kwargs)
+    return wrapper(type)(field, **kwargs)
 
 
 @register.simple_tag
@@ -27,7 +27,7 @@ def ff_fields(form, fields=None, exclude=None, **kwargs):
     else:
         fields = list(form.fields)
 
-    return FINEFORMS_WRAPPERS["fields"](form, fields, **kwargs)
+    return wrapper("fields")(form, fields, **kwargs)
 
 
 @register.simple_tag
