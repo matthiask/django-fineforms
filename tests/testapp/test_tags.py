@@ -1,3 +1,4 @@
+import django
 from django import forms
 from django.template import Context, Template
 from django.test import TestCase
@@ -99,7 +100,7 @@ class TagsTestCase(TestCase):
         )
         self.assertHTMLEqual(
             t.render(Context({"form": Form({})})),
-            """\
+            f"""\
 <div class="row errors">
   <div class="small-12 columns">
     <h3>Please correct the following errors:</h3>
@@ -113,7 +114,7 @@ class TagsTestCase(TestCase):
     <label class="error required" for="id_email">Email</label>
   </div>
   <div class="small-12 medium-9 columns">
-    <input type="email" name="email" id="id_email" maxlength="320" required />
+    <input {'aria-invalid="true"' if django.VERSION > (5,) else ''} type="email" name="email" id="id_email" maxlength="320" required />
     <ul class="errorlist"><li>This field is required.</li></ul>
   </div>
 </div>
@@ -166,13 +167,13 @@ Email
         t = Template("{% load fineforms %}{% ff_fields form %}")
         self.assertHTMLEqual(
             t.render(Context({"form": HelpForm()})),
-            """\
+            f"""\
 <div class="row required widget--textinput">
   <div class="small-12 medium-3 columns">
     <label class="required" for="id_field1">Field1</label>
   </div>
   <div class="small-12 medium-9 columns">
-    <input type="text" name="field1" required id="id_field1" />
+    <input {'aria-describedby="id_field1_helptext"' if django.VERSION > (5,) else ''} type="text" name="field1" required id="id_field1" />
     <p class="help-text">field1 help text</p>
   </div>
 </div>
@@ -180,7 +181,7 @@ Email
   <div class="small-12 medium-3 columns"></div>
   <div class="small-12 medium-9 columns">
     <div>
-      <input type="checkbox" name="field2" required id="id_field2" />
+      <input {'aria-describedby="id_field2_helptext"' if django.VERSION > (5,) else ''} type="checkbox" name="field2" required id="id_field2" />
       <label class="required" for="id_field2">Field2</label>
       <p class="help-text">field2 help text</p>
     </div>
